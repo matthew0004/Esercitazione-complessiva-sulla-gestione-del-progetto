@@ -5,7 +5,7 @@ using namespace std;
 
 struct libro
 {
-        int codiceISBN;
+        string codiceISBN;
         string titolo;
         string autore;
         string editore;
@@ -56,13 +56,80 @@ void stampa (libro struttura[],int n)
         cout<<"Tag Genere :  \n"<<struttura[i].tagGenere<<endl;
     }
 }
+
+void eliminaLibro(libro struttura[], int n)
+{
+    string verifica;
+    int i = 0;
+
+    cout<<"inserire il codice del libro che si vuole eliminare"<<endl;
+    cin>>verifica;
+
+    if(struttura[i].codiceISBN == verifica)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            struttura[i].titolo = "";
+            struttura[i].autore = "";
+            struttura[i].editore = "";
+            struttura[i].annoPubblicazione = 0;
+            struttura[i].prezzo = 0;
+            struttura[i].codiceISBN = "";
+            struttura[i].tagGenere = "";
+        }
+    }
+}
+
 int main()
 {
-    int n=0;
+    int n=0, opzione;
     libro struttura[50];
 
     n=inserimento(struttura);
     stampa(struttura, n);
+    eliminaLibro(struttura, n);
+
+    do{
+
+        cout<<"0 - esci dal programma"<<endl;
+
+        cout <<"1 - Inserire libro" << endl;
+        cout <<"2 - Stampa libro o catalogo" << endl;
+        cout <<"3 - Cancella libro" << endl;
+        cout <<"4 - Ricerca libro" << endl;
+        cout <<"5 - Effettua modifiche al libro " << endl;
+        cin >> opzione;
+
+        if(opzione == 0)
+            break;
+
+        switch(opzione){
+        case 1:
+            inserimento(struttura);
+        break;
+
+        case 2:
+            stampa(struttura, n);
+        break;
+
+        case 3:
+            eliminaLibro(struttura, n);
+            stampa(struttura, n);
+        break;
+
+        case 4:
+
+        break;
+
+        case 5:
+
+        break;
+
+            default: cout << "Opzione non valida" << endl;
+        }
+
+    }
+    while(true);
 
     return 0;
 }
