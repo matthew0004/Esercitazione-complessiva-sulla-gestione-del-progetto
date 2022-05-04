@@ -78,6 +78,64 @@ void eliminaLibro(libro struttura[], int n)
             struttura[i].tagGenere = "";
         }
     }
+    stampa(struttura, n);
+}
+
+void ricercaLibro(libro struttura[], int n)
+{
+    string ricerca;
+    int i=0;
+    
+    cout<<"inserire il codice del libro da ricercare "<<endl;
+    cin>>ricerca;
+    
+    if(struttura[i].codiceISBN == ricerca)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            cout<<"Libro trovato"<<endl;
+            cout<<"Codice :  \n"<<struttura[i].codiceISBN<<endl;
+            cout<<"Titolo :  \n"<<struttura[i].titolo<<endl;
+            cout<<"Autore :  \n"<<struttura[i].autore<<endl;
+            cout<<"Editore :  \n"<<struttura[i].editore<<endl;
+            cout<<"Anno Pubblicazio : \n"<<struttura[i].annoPubblicazione<<endl;
+            cout<<"Prezzo : \n"<<struttura[i].prezzo<<endl;
+            cout<<"Tag Genere : \n"<<struttura[i].tagGenere<<endl;
+        }
+    }
+    stampa(struttura, n);
+}
+
+void modificaLibro(libro struttura[], int n)
+{
+    string modifica;
+    int i=0;
+    
+    cout<<"inserire il codice del libro da modificare "<<endl;
+    cin>>modifica;
+    
+    if(struttura[i].codiceISBN == modifica)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            cout<<"CodiceISBN : "<<endl;
+            cin>>struttura[i].codiceISBN;
+            cout<<"Titolo : "<<endl;
+            cin>>struttura[i].titolo;
+            cout<<"Autore : "<<endl;
+            cin>>struttura[i].autore;
+            cout<<"Editori : "<<endl;
+            cin>>struttura[i].editore;
+            cout<<"Anno Pubblicazione: "<<endl;
+            cin>>struttura[i].annoPubblicazione;
+            cout<<"Prezzo : "<<endl;
+            cin>>struttura[i].prezzo;
+            cout<<"Tag Genere : "<<endl;
+            cin>>struttura[i].tagGenere;
+            
+        }
+    }
+    stampa(struttura, n);
 }
 
 int main()
@@ -86,8 +144,7 @@ int main()
     libro struttura[50];
 
     n=inserimento(struttura);
-    stampa(struttura, n);
-    eliminaLibro(struttura, n);
+    
 
     do{
 
@@ -114,15 +171,14 @@ int main()
 
         case 3:
             eliminaLibro(struttura, n);
-            stampa(struttura, n);
         break;
 
         case 4:
-
+            ricercaLibro(struttura, n);
         break;
 
         case 5:
-
+            modificaLibro(struttura, n);
         break;
 
             default: cout << "Opzione non valida" << endl;
